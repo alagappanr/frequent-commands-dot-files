@@ -1,0 +1,11 @@
+#!/bin/bash
+# Usage: mygrep "Search term"
+# Searches through the current directory and displays only the file name+line number
+if [[ $# -ne 1 ]];
+then
+    echo "Enter exactly one argument- the search term"
+else
+    echo "Searching...."
+    find ./ -type f | xargs grep -in "$1" | cut -d":" -f1-2
+    echo "Done."
+fi
